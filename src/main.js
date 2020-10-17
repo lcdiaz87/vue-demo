@@ -7,7 +7,9 @@ import VueAxios from 'vue-axios'
 
 import App from './App'
 import router from './router'
+import { BootstrapVue } from 'bootstrap-vue'
 Vue.use(Vuex)
+Vue.use(BootstrapVue)
 
 import store from './store'
 

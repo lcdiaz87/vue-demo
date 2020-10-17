@@ -1,13 +1,13 @@
 <template>
    <div id="people">
-      <ejs-grid :dataSource="users" :allowSorting='true' :allowFiltering='true'>
+      <ejs-grid :dataSource="users" :allowSorting='true' :allowFiltering='true' :rowDataBound="rowDataBound">
         <e-columns>
           <e-column field='name' headerText='Name' headerTextAlign='Center' textAlign='Left'></e-column>
-          <e-column field='height' headerText='Height' headerTextAlign='Center' textAlign='Right' width=100></e-column>
-          <e-column field='mass' headerText='Mass' headerTextAlign='Center' textAlign='Right' width=100></e-column>
-          <e-column field='created' headerText='Created' headerTextAlign='Center' textAlign='Center' format='MM-dd-yyyy hh:mm' type='datetime' width=220></e-column>
-          <e-column field='edited' headerText='Edited' headerTextAlign='Center' textAlign='Center' format='MM-dd-yyyy hh:mm' type='datetime' width=220></e-column>
-          <e-column field='homeworld' headerText='Planet' headerTextAlign='Center' textAlign='Center' width='180' :template="routerlinkTemplate" ></e-column>
+          <e-column field='height' headerText='Height' headerTextAlign='Center' textAlign='Right' width=100 ></e-column>
+          <e-column field='mass' headerText='Mass' headerTextAlign='Center' textAlign='Right' width=100 ></e-column>
+          <e-column field='created' headerText='Created' headerTextAlign='Center' textAlign='Center' format='MM-dd-yyyy hh:mm:ss' type='date' width=220></e-column>
+          <e-column field='edited' headerText='Edited' headerTextAlign='Center' textAlign='Center' format='MM-dd-yyyy hh:mm:ss' type='date' width=220></e-column>
+          <e-column field='homeworld' headerText='Planet' headerTextAlign='Center' textAlign='Center' width='180' :allowSorting='false' :allowFiltering='false' :template="routerlinkTemplate" ></e-column>
         </e-columns>
       </ejs-grid>
   </div>
@@ -43,6 +43,16 @@ export default {
   },
   provide: {
     grid: [Sort, Filter]
+  },
+  methods: {
+    rowDataBound(args) { 
+      args.data.mass = parseInt(args.data.mass); 
+      args.data.height = parseInt(args.data.height);
+
+      args.data.created = new Date(args.data.created); 
+      args.data.edited = new Date(args.data.edited);
+      
+    } 
   }
 }
 </script>

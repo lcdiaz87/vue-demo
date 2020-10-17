@@ -29,6 +29,9 @@ export default {
 @import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
 @import "../node_modules/@syncfusion/ej2-vue-grids/styles/material.css";
 
+@import 'bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap-vue/dist/bootstrap-vue.css';
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
