@@ -14,35 +14,40 @@ let apiClient = axios.create({
 const store = new Vuex.Store({
   state:{
     people:[],
-    counter: 0
+    planet: {}
   },
   mutations: {
     savePeople(state, data) {
         state.people = data.results;
     },
-    increment(state) {
-      state.counter++;
+    savePlanet(state, data) {
+      state.planet = data;
     }
   },
   actions: {
     loadPeople(context) {
         apiClient.get('people').then(result => {
-            context.commit('savePeople', result.data);
+          context.commit('savePeople', result.data);
         }).catch(error => {
-            console.log("error: loading people");
-            throw new Error(`API ${error}`);
+          console.log("error: loading people");
+          throw new Error(`API ${error}`);
         });
     },
-    increment(context) {
-      context.commit("increment");
+    loadPlanet(context, planetId) {
+      apiClient.get('planets/'+planetId).then(result => {
+        context.commit('savePlanet', result.data);
+      }).catch(error => {
+        console.log("error: loading planet");
+        throw new Error(`API ${error}`);
+      });
     }
   },
   getters: {
     getPeople(state){
         return state.people;
     },
-    counter(state) {
-      return state.counter;
+    getPlanet(state) {
+      return state.planet;
     }
   }
 });

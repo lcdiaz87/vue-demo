@@ -5,8 +5,8 @@
           <e-column field='name' headerText='Name' headerTextAlign='Center' textAlign='Left'></e-column>
           <e-column field='height' headerText='Height' headerTextAlign='Center' textAlign='Right' width=100></e-column>
           <e-column field='mass' headerText='Mass' headerTextAlign='Center' textAlign='Right' width=100></e-column>
-          <e-column field='created' headerText='Created' headerTextAlign='Center' textAlign='Center' format='M-d-y hh:mm:ss' type='datetime' width=220></e-column>
-          <e-column field='edited' headerText='Edited' headerTextAlign='Center' textAlign='Center' format='M-d-y  hh:mm:ss' type='datetime' width=220></e-column>
+          <e-column field='created' headerText='Created' headerTextAlign='Center' textAlign='Center' format='MM-dd-yyyy hh:mm' type='datetime' width=220></e-column>
+          <e-column field='edited' headerText='Edited' headerTextAlign='Center' textAlign='Center' format='MM-dd-yyyy hh:mm' type='datetime' width=220></e-column>
           <e-column field='homeworld' headerText='Planet' headerTextAlign='Center' textAlign='Center' width='180' :template="routerlinkTemplate" ></e-column>
         </e-columns>
       </ejs-grid>
