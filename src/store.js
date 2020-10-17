@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from 'axios';
-import VueAxios from 'vue-axios';
 Vue.use(Vuex);
 
 let apiClient = axios.create({
@@ -27,11 +26,10 @@ const store = new Vuex.Store({
   },
   actions: {
     loadPeople(context) {
-        console.log("LOAD PEOPLE");
         apiClient.get('people').then(result => {
             context.commit('savePeople', result.data);
         }).catch(error => {
-            console.log("error loading people");
+            console.log("error: loading people");
             throw new Error(`API ${error}`);
         });
     },
@@ -40,8 +38,8 @@ const store = new Vuex.Store({
     }
   },
   getters: {
-    showPeople(state){
-        return state.counter;
+    getPeople(state){
+        return state.people;
     },
     counter(state) {
       return state.counter;

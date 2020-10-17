@@ -20,7 +20,7 @@ export default new Router({
       component: People
     },
     {
-      path: '/planets/{planetId}',
+      path: '/planets/:id',
       name: 'Planet',
       component: Planet
     }
